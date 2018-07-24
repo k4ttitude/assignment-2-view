@@ -6,5 +6,47 @@
 	<li *ngFor="let doc of docs">
 		<a href="#">{{doc.title}}</a>
 	</li>
-	
 </ul>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Modal</button>
+
+<div class="modal" id="myModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form (submit)="upload($event)">
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Upload Document</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<!-- Title -->
+					<div class="form-group mt-2">
+						<span>Title</span>
+						<input class="form-control" name="title" [(ngModel)]="document.title">
+					</div>
+
+					<!-- Description -->
+					<div class="form-group mt-2">
+						<span>Description</span>
+						<textarea class="form-control" id="description" name="description" 
+							[(ngModel)]="document.description"></textarea>
+					</div>
+
+					<!-- File -->
+					<div class="form-group mt-2">
+						<input type="file" class="form-control" (change)="fileChange($event)" id="file" name="file">
+					</div>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					<input type="submit" class="btn btn-primary" value="Upload">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
