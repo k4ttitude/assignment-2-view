@@ -1,0 +1,10 @@
+<p>
+	Welcome <span *ngIf="user">{{user.username}}</span>
+</p>
+
+<ul *ngIf="docs">
+	<li *ngFor="let doc of docs">
+		<a href="#">{{doc.title}}</a>
+	</li>
+	
+</ul>
