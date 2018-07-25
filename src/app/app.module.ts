@@ -6,15 +6,17 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FeedComponent } from './feed/feed.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RegisterComponent } from './register/register.component';
+import { DocumentComponent } from './document/document.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './/app-routing.module';
 
 import { AuthGuard} from './auth.guard';
 import { AuthService } from './services/auth.service';
-import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { RegisterComponent } from './register/register.component';
     HeaderComponent,
     ProfileComponent,
     RegisterComponent,
+    DocumentComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,6 @@ import { RegisterComponent } from './register/register.component';
     FormsModule
   ],
   providers: [ AuthService ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent, HeaderComponent, FooterComponent ]
 })
 export class AppModule { }

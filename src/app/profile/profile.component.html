@@ -1,15 +1,152 @@
-<p>
-	Welcome <span *ngIf="user">{{user.username}}</span>
-</p>
+<div class="container">
 
-<ul *ngIf="docs">
-	<li *ngFor="let doc of docs">
-		<a href="#">{{doc.title}}</a>
-	</li>
-</ul>
+	<p *ngIf="user">
+		Welcome
+		<span class="user-name">{{user.username}}</span> (Not you,
+		<span class="user-name">{{user.username}}</span>?
+		<a href="/">Đăng xuất</a>)
+	</p>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Modal</button>
+	<p *ngIf="!user">
+		Welcome
+		<span class="user-name">demo</span> (Not you,
+		<span class="user-name">demo</span>?
+		<a href="/">Đăng xuất</a>)
+	</p>
 
+	<div class="card user-info">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-3 text-center">
+					<img *ngIf="(!user.avatar) || (!user.avatar.safeSource)" src="assets/img/user.png" class="avatar" />
+					<img *ngIf="user.avatar.safeSource && user.avatar.safeSource" [src]="user.avatar.safeSource" class="avatar">
+					<div class="name">
+						<span *ngIf="user">{{user.username}}</span>
+						<span *ngIf="!user">demo</span>
+					</div>
+					<button class="btn btn-outline-info btn-block"
+						data-toggle="modal" data-target="#avaModal">Upload your picture</button>
+					<button class="btn btn-outline-primary btn-block">Invite Friend</button>
+					<button class="btn btn-danger btn-block">Remove</button>
+				</div>
+				<!--/. end col-md-3 -->
+				<div class="col-md-9">
+					<div class="row">
+						<div class="col-md-12">
+							<h3>User Info
+								<i style="float: right;" class="far fa-edit text-primary"></i>
+							</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="info-block">
+								<div class="title">Name</div>
+								<div class="content">
+									<span *ngIf="user">{{user.name}}</span>
+								</div>
+							</div>
+							<div class="info-block">
+								<div class="title">Email</div>
+								<div class="content">
+									<span>demo@demo.com</span>
+								</div>
+							</div>
+							<div class="info-block">
+								<div class="title">Birthday</div>
+								<div class="content">
+									<span>06/09/1996</span>
+								</div>
+							</div>
+							<div class="info-block">
+								<div class="title">Gender</div>
+								<div class="content">
+									<span>Male</span>
+								</div>
+							</div>
+							<div class="info-block">
+								<div class="title">Address</div>
+								<div class="content">
+									<span>FPT University, Hanoi, Vietnam</span>
+								</div>
+							</div>
+
+						</div>
+						<!--/. end col-md-6 -->
+						<div class="col-md-6">
+							<div class="info-block">
+								<div class="title">User Type</div>
+								<div class="content">
+									<span *ngIf="user">{{user.type_id}}&nbsp;</span>
+									<span *ngIf="!user">User</span>
+								</div>
+							</div>
+							<div class="info-block">
+								<div class="title">Documents Posted</div>
+								<div class="content">
+									<span *ngIf="docs">{{docs.length}}</span>
+									<span *ngIf="!docs">0</span>
+								</div>
+							</div>
+						</div>
+						<!--/. end col-md-6 -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/. end card -->
+
+	<div class="card owner-document">
+		<div class="card-header">
+			<h3 class="float-left">Owner Documents</h3>
+			<button class="btn btn-primary float-right"
+				data-toggle="modal" data-target="#myModal">Upload Document</button>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="container">
+					<!-- <ul class="slides" *ngIf="docs"> -->
+					<ul class="docList" *ngIf="docs">
+						<li *ngFor="let doc of docs">
+							<div class="card m-2 doc">
+								<div class="card-header">
+									<h4>{{doc.title}}</h4>
+								</div>
+								<div class="card-body">
+									<p>{{doc.description}}</p>
+									<!-- <embed class="content" [src]="doc.content.safeSource"
+										type="{{doc.content.type}}" id="{{doc.id}}" /> -->
+								</div>
+							</div>
+						</li>
+						<!-- items mirrored twice, total of 12 -->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/. end card -->
+
+</div>
+
+<div class="modal" id="avaModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form (submit)="uploadAvatar($event)" class="m-2">
+				<h4>Avatar</h4>
+				<input type="file" class="form-control" accept="image/*" 
+					(change)="fileChange($event)" id="ava" name="ava">
+				<div class="float-right m-2">
+					<button class="btn btn-danger" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary ml-2">Upload</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- Upload Document -->
 <div class="modal" id="myModal">
 	<div class="modal-dialog">
 		<div class="modal-content">

@@ -5,3 +5,7 @@
 	min-height: 300px;
 	background-color: #3333;
 }
+
+ul {
+	list-style-type: none;
+}

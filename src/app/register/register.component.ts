@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { User } from '../model/user';
 import { File } from '../model/file';
@@ -16,10 +17,11 @@ export class RegisterComponent implements OnInit {
   avatar: File;
 
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   	this.user = new User();
+    this.user.type_id = "Student"; // Student by default
   }
 
   register(event) {
@@ -29,10 +31,17 @@ export class RegisterComponent implements OnInit {
   	reader.onload = this._handleReaderLoaded.bind(this);
   	
   	if (this.file) {
+      // Save with avatar
   		reader.readAsBinaryString(this.file);	
   	} else {
   		// Save without avatar
+      var avatar = new File();
+      avatar.encode = 'base64';
+      avatar.type = "image/jpg";
+      avatar.extension = "jpg";
+      this.user.avatar = avatar;
   		this.userService.saveUser(this.user);
+      this.router.navigate(['/login']);
   	}
   	
   }
@@ -50,6 +59,7 @@ export class RegisterComponent implements OnInit {
 
   	// Save user
   	this.userService.saveUser(this.user);
+    this.router.navigate(['/login']);
   }
 
   fileChange(event) {

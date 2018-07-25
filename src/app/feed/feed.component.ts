@@ -16,14 +16,20 @@ export class FeedComponent implements OnInit {
 
   docs: Document[];
   content: File;
+  query: string;
 
   constructor(private documentService: DocumentService, private _domSanitizer: DomSanitizer) { }
 
   ngOnInit() {
-  	this.search();
+    this.query = sessionStorage.getItem('query');
+    if (this.query != null) {
+      this.search();
+      return;
+    }
+  	this.getDocuments();
   }
 
-  public search(): void {
+  public getDocuments(): void {
   	this.documentService.getDocuments().subscribe(_json => {
       this.docs = _json;
       for (let doc of this.docs) {
@@ -33,6 +39,8 @@ export class FeedComponent implements OnInit {
   	});
   }
 
-  
+  public search() {
+    
+  }
 
 }

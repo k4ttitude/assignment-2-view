@@ -1,0 +1,29 @@
+
+.comment-input {
+  margin-top: 16px;
+}
+
+.comment-input img {
+  width: 100%;
+}
+
+.comment-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 16px;
+}
+
+.comment-list li {
+  margin-bottom: 12px;
+}
+
+.comment-list img {
+  height: 75px;
+  margin: 0 auto;
+  float: right;
+}
+
+.comment-list .card-footer .btn {
+  margin-right: 8px;
+}

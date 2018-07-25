@@ -24,7 +24,24 @@
 				<input type="file" id="avatar" class="form-control" (change)="fileChange($event)"
 					accept="image/*" name="avatar">
 
-				<button type="submit" class="btn btn-outline-primary mt-3 float-right">Register</button>
+				<button type="button" class="btn btn-outline-primary mt-3 float-right"
+					type="submit">Register</button>
+
+
+				<div class="modal" id="registerModal">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+
+							<!-- Modal body -->
+							<div class="modal-body text-center">
+									<h2 class="h3 mb-3 font-weight-normal">Are you sure?</h2>
+									<button class="btn btn-lg btn-danger btn-block" type="submit"
+										data-dismiss="modal">Register</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
 			</form>
 		</div>
 	</div>
