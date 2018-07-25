@@ -12,6 +12,8 @@ import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { AuthGuard} from './auth.guard';
 import { ProfileComponent } from './profile/profile.component';
+import { DocumentComponent } from './document/document.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     FeedComponent,
     HeaderComponent,
-    ProfileComponent
+    ProfileComponent,
+    DocumentComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

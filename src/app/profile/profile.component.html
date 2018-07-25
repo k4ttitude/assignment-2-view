@@ -1,52 +1,133 @@
-<p>
-	Welcome <span *ngIf="user">{{user.username}}</span>
-</p>
+<div class="container">
 
-<ul *ngIf="docs">
-	<li *ngFor="let doc of docs">
-		<a href="#">{{doc.title}}</a>
-	</li>
-</ul>
+	<p *ngIf="user">
+		Welcome
+		<span class="user-name">{{user.username}}</span> (Not you,
+		<span class="user-name">{{user.username}}</span>?
+		<a href="/">Đăng xuất</a>)
+	</p>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Modal</button>
+	<p *ngIf="!user">
+		Welcome
+		<span class="user-name">demo</span> (Not you,
+		<span class="user-name">demo</span>?
+		<a href="/">Đăng xuất</a>)
+	</p>
 
-<div class="modal" id="myModal">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form (submit)="upload($event)">
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title">Upload Document</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
+	<ul *ngIf="docs">
+		<li *ngFor="let doc of docs">
+			<a href="#">{{doc.title}}</a>
+		</li>
+	</ul>
 
-				<!-- Modal body -->
-				<div class="modal-body">
-					<!-- Title -->
-					<div class="form-group mt-2">
-						<span>Title</span>
-						<input class="form-control" name="title" [(ngModel)]="document.title">
+	<div class="card user-info">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-3">
+					<img src="assets/img/user.png" class="avatar" />
+					<div class="name">
+						<span *ngIf="user">{{user.username}}</span>
+						<span *ngIf="!user">demo</span>
 					</div>
-
-					<!-- Description -->
-					<div class="form-group mt-2">
-						<span>Description</span>
-						<textarea class="form-control" id="description" name="description" 
-							[(ngModel)]="document.description"></textarea>
+					<button class="btn btn-outline-info btn-block">Upload your picture</button>
+					<button class="btn btn-outline-primary btn-block">Invite Friend</button>
+					<button class="btn btn-danger btn-block">Remove</button>
+				</div>
+				<!--/. end col-md-3 -->
+				<div class="col-md-9">
+					<div class="row">
+						<div class="col-md-12">
+							<h3>User Info
+								<i style="float: right;" class="far fa-edit text-primary"></i>
+							</h3>
+						</div>
 					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="info-block">
+								<div class="title">Name</div>
+								<div class="content">
+									<span>demo</span>
+								</div>
+							</div>
+							<div class="info-block">
+								<div class="title">Email</div>
+								<div class="content">
+									<span>demo@demo.com</span>
+								</div>
+							</div>
+							<div class="info-block">
+								<div class="title">Birthday</div>
+								<div class="content">
+									<span>06/09/1996</span>
+								</div>
+							</div>
+							<div class="info-block">
+								<div class="title">Gender</div>
+								<div class="content">
+									<span>Male</span>
+								</div>
+							</div>
+							<div class="info-block">
+								<div class="title">Address</div>
+								<div class="content">
+									<span>FPT University, Hanoi, Vietnam</span>
+								</div>
+							</div>
 
-					<!-- File -->
-					<div class="form-group mt-2">
-						<input type="file" class="form-control" (change)="fileChange($event)" id="file" name="file">
+						</div>
+						<!--/. end col-md-6 -->
+						<div class="col-md-6">
+							<div class="info-block">
+								<div class="title">User Type</div>
+								<div class="content">Administrator</div>
+							</div>
+							<div class="info-block">
+								<div class="title">Documents Posted</div>
+								<div class="content">69</div>
+							</div>
+						</div>
+						<!--/. end col-md-6 -->
 					</div>
 				</div>
-
-				<!-- Modal footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-					<input type="submit" class="btn btn-primary" value="Upload">
-				</div>
-			</form>
+			</div>
 		</div>
 	</div>
+	<!--/. end card -->
+
+	<div class="card owner-document">
+		<div class="card-body">
+			<h3>Owner Documents</h3>
+			<div class="row">
+				<div class="flexslider carousel">
+					<ul class="slides">
+						<li>
+							<img src="assets/img/note3.png" />
+						</li>
+						<li>
+							<img src="assets/img/note3.png" />
+						</li>
+						<li>
+							<img src="assets/img/note3.png" />
+						</li>
+						<li>
+							<img src="assets/img/note3.png" />
+						</li>
+						<li>
+							<img src="assets/img/note3.png" />
+						</li>
+						<li>
+							<img src="assets/img/note3.png" />
+						</li>
+						<li>
+							<img src="assets/img/note3.png" />
+						</li>
+						<!-- items mirrored twice, total of 12 -->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/. end card -->
+
 </div>

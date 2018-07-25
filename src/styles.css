@@ -1,6 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 body {
 	margin: 0;
-	font-family: Verdana, sans-serif;
-	background-color: #1111 !important;
+	font-family: 'Open Sans', sans-serif!important;
+	background-color: #fff !important;
+}
+
+.btn-outline-primary {
+  color: #fd9a27;
+  border-color: #fd9a27;
+}
+
+.btn-outline-primary:hover {
+	background: #fd9a27;
+	border-color: #fd9a27;
+  color: #fff;
+}
+
+.form-control:focus {
+	border-color: #fd9a27;
+	box-shadow: 0 0 0 0.2rem rgba(253, 154, 39, .25);
+}
+
+.flex-direction-nav a {
+	width: 50px;
+	height: 50px;
+}
+
+.container {
+	margin-top: 16px;
 }

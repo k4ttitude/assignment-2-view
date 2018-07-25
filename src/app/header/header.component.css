@@ -8,3 +8,15 @@
 	border-radius: 0 0 .5rem 0;*/
 	/*background: #343a40;*/
 }
+
+.navbar-dark .navbar-nav .nav-link {
+	color: #fff;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #fd9a27;
+}
+
+.bg-dark {
+	background: #1f2225;
+}
