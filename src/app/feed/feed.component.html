@@ -1,18 +1,8 @@
 <div class="container">
-	<h2>Documents Feed</h2>
+	<p>Documents Feed</p>
 
-	<ul *ngIf="docs">
-		<li *ngFor="let doc of docs">
-			<div class="card col-8 mt-5">
-				<div class="card-header">
-					<h4>{{doc.title}}</h4>
-					<p>{{doc.description}}</p>
-				</div>
-				<div class="card-body">
-					<embed class="content" [src]="doc.content.safeSource"
-						type="{{doc.content.type}}" />
-				</div>
-			</div>
-		</li>
-	</ul>
+	<br>
+
+	<embed class="pdf" [src]="doc.safeSource"
+	type="application/pdf" />
 </div>

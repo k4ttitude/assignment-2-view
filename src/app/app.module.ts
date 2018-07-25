@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -14,6 +13,7 @@ import { AuthGuard} from './auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { DocumentComponent } from './document/document.component';
 import { FooterComponent } from './footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -29,8 +29,7 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     HttpModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]

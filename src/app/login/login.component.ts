@@ -36,14 +36,9 @@ export class LoginComponent implements OnInit {
 
     let result = this.authService.validateLogin(username, password).subscribe(data => {
       if (data) {
+        this.router.navigate(['/profile']);
         this.authService.setLoggedIn(true);
-        let user = new User();
-        user.username = username;
-        this.userService.getUsersByEg(user).subscribe(_json => {
-          user = _json[0];
-          this.authService.setUser(user);
-          this.router.navigate(['/profile']);
-        });
+        this.authService.setUsername(username);
       } else {
         window.alert('Username or password is wrong.');
       }
@@ -52,7 +47,7 @@ export class LoginComponent implements OnInit {
 
   logout() {
     this.authService.setLoggedIn(false);
-    this.authService.setUser(null);
+    this.authService.setUsername(null);
   }
 
 }

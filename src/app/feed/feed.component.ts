@@ -14,8 +14,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class FeedComponent implements OnInit {
 
-  docs: Document[];
-  content: File;
+  doc: File;
+  safeSource: SafeResourceUrl;
 
   constructor(private documentService: DocumentService, private _domSanitizer: DomSanitizer) { }
 
@@ -25,11 +25,10 @@ export class FeedComponent implements OnInit {
 
   public search(): void {
   	this.documentService.getDocuments().subscribe(_json => {
-      this.docs = _json;
-      for (let doc of this.docs) {
-        doc.content.safeSource = this._domSanitizer.bypassSecurityTrustResourceUrl(
-          'data:' + doc.content.type + ';' + doc.content.encode + ',' + doc.content.data.toString());
-      }
+  		this.doc = _json[0].content;
+  		let source: string = 'data:' + this.doc.type + '/' + this.doc.extension
+  			+ ';' + this.doc.encode + ',' + this.doc.data;
+  		this.doc.safeSource = this._domSanitizer.bypassSecurityTrustResourceUrl(source);
   	});
   }
 

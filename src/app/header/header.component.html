@@ -23,11 +23,8 @@
 			<a class="nav-link" routerLink="/login">Login</a>
 		</li>
 
-		<li class="nav-item nav-brand dropdown col-auto" *ngIf="auth.isLoggedIn">
-			<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">{{auth.getUser().username}}</a>
-			<div class="dropdown-menu">
-				<a class="dropdown-item" routerLink="/login">Logout</a>
-			</div>
+		<li class="nav-item" *ngIf="auth.isLoggedIn">
+			<a class="nav-link" routerLink="/login">Logout</a>
 		</li>
 	</ul>
 </nav>

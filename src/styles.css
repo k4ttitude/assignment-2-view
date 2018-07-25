@@ -1,8 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 body {
 	margin: 0;
+<<<<<<< HEAD
 	font-family: 'Open Sans', sans-serif!important;
 	background-color: #fff !important;
+=======
+	font-family: Verdana, sans-serif;	
+>>>>>>> parent of 439df90... docs feeds & upload
 }
 
 .btn-outline-primary {
