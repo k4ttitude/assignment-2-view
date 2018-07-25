@@ -9,9 +9,8 @@
 					<p>{{doc.description}}</p>
 				</div>
 				<div class="card-body">
-					<a href="#{{doc.id}}" download>Download</a>
 					<embed class="content" [src]="doc.content.safeSource"
-						type="{{doc.content.type}}" id="{{doc.id}}" />
+						type="{{doc.content.type}}" />
 				</div>
 			</div>
 		</li>

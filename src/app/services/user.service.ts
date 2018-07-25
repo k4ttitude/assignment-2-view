@@ -15,7 +15,6 @@ export class UserService {
   private getUsers_url = '/user/getUsers';
   private getUserById_url = '/user/getUser/';
   private getUsersByEg_url = '/user/getUsersByEg';
-  private saveUser_url = '/user/saveUser';
 
   constructor(private _http: Http) { }
 
@@ -36,14 +35,6 @@ export class UserService {
 
   	return this._http.post(request_url, user).pipe(
   		map((res: Response) => res.json()));
-  }
-
-  public saveUser(user: User) {
-    var request_url = environment.swd.apiHost + this.saveUser_url;
-
-    this._http.put(request_url, user).subscribe(_result => {
-      console.log(_result);
-    })
   }
 
 }
