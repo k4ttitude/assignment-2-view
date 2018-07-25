@@ -24,13 +24,11 @@ export class ProfileComponent implements OnInit {
   				private userService: UserService) { }
 
   ngOnInit() {
-  	this.user = this.auth.getUser();
-	let doc = new Document();
+  	this.user = JSON.parse(sessionStorage.getItem('user'));
+	  let doc = new Document();
   	doc.authorId = (this.user) ? this.user.id : '';
   	this.docService.getDocumentsByEg(doc).subscribe(_json => {
-  		console.log("doc json: " + _json);
   		this.docs = _json;
-  		if (this.docs) console.log(this.docs);
   	});
   }
 

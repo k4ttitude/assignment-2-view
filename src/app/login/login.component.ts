@@ -12,19 +12,19 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  private users: User[];
-
-  constructor(private userService: UserService, private authService: AuthService,
-    private router: Router) { }
-
-  ngOnInit() {
-  	this.search();
+  constructor(
+    private userService: UserService, 
+    private authService: AuthService,
+    private router: Router
+   ) { 
+    authService.sessionSub.subscribe(evt => {
+      this.user = authService.user;
+    })
   }
 
-  public search(): void {
-  	this.userService.getUsers().subscribe(_json => {
-  		this.users = _json;
-  	});
+  private user:User;
+
+  ngOnInit() {
   }
 
   login(event) {
@@ -36,14 +36,17 @@ export class LoginComponent implements OnInit {
 
     let result = this.authService.validateLogin(username, password).subscribe(data => {
       if (data) {
-        this.authService.setLoggedIn(true);
-        let user = new User();
-        user.username = username;
-        this.userService.getUsersByEg(user).subscribe(_json => {
-          user = _json[0];
-          this.authService.setUser(user);
+        // Do Login
+        let u = new User();
+        u.username = username;
+
+        // Call service
+        this.userService.getUsersByEg(u).subscribe(_json => {
+          this.authService.user = _json[0];
           this.router.navigate(['/profile']);
         });
+
+        console.log(u);
       } else {
         window.alert('Username or password is wrong.');
       }
@@ -51,8 +54,9 @@ export class LoginComponent implements OnInit {
   }
 
   logout() {
-    this.authService.setLoggedIn(false);
-    this.authService.setUser(null);
+    this.authService.user = null;
+    this.user = null;
+    // sessionStorage.removeItem('user');
   }
 
 }

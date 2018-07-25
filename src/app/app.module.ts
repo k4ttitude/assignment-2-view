@@ -5,13 +5,16 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FeedComponent } from './feed/feed.component';
+import { ProfileComponent } from './profile/profile.component';
 
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './/app-routing.module';
+
 import { AuthGuard} from './auth.guard';
-import { ProfileComponent } from './profile/profile.component';
+import { AuthService } from './services/auth.service';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,8 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     FeedComponent,
     HeaderComponent,
-    ProfileComponent
+    ProfileComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,7 @@ import { ProfileComponent } from './profile/profile.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ AuthService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

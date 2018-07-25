@@ -8,3 +8,17 @@
 	border-radius: 0 0 .5rem 0;*/
 	/*background: #343a40;*/
 }
+
+.dropdown, .dropdown-menu, .dropdown-item
+{
+  color: darkgray;
+  background-color: #343a40;
+  border-color: #fff;
+}
+
+.dropdown-menu :hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #343a40;
+  border-color: #fff;
+}
