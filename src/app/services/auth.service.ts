@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
+import { User } from '../model/user';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class AuthService {
   private login_url = '/user/login';
 
   private loggedInStatus = false;
-  private username;
+  private user: User;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -25,12 +25,12 @@ export class AuthService {
   	return this.loggedInStatus;
   }
 
-  setUsername(value: string) {
-    this.username = value;
+  setUser(value: User) {
+    this.user = value;
   }
 
-  getUsername() {
-    return this.username;
+  getUser():User {
+    return this.user;
   }
 
   validateLogin(username, password):Observable<any> {
