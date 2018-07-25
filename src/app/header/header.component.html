@@ -8,7 +8,7 @@
 
 	<form class="form-inline mt-2 mt-md-0" style="width: 100%;">
 		<input class="form-control mr-sm-2" type="text" 
-			placeholder="Search" aria-label="Search" style="width: 60%;">
+		placeholder="Search" aria-label="Search" style="width: 60%;">
 		<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 	</form>
 
@@ -19,15 +19,41 @@
 		<li class="nav-item">
 			<a class="nav-link" routerLink="/profile">Profile</a>
 		</li>
-		<li class="nav-item" *ngIf="!auth.isLoggedIn">
-			<a class="nav-link" routerLink="/login">Login</a>
+		<li class="nav-item nav-brand dropdown col-auto" *ngIf="!user">
+			<a class="nav-link dropdown-toggle" href="#" id="navbardrop-account" data-toggle="dropdown">Account</a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" routerLink="/login">Login</a>
+				<a class="dropdown-item" routerLink="/register">Register</a>
+			</div>
 		</li>
 
-		<li class="nav-item nav-brand dropdown col-auto" *ngIf="auth.isLoggedIn">
-			<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">{{auth.getUser().username}}</a>
+		<li class="nav-item nav-brand dropdown col-auto" *ngIf="user">
+			<a class="nav-link dropdown-toggle" href="#" id="navbardrop-logout" data-toggle="dropdown">{{user.name}}</a>
 			<div class="dropdown-menu">
-				<a class="dropdown-item" routerLink="/login">Logout</a>
+				<a class="dropdown-item" data-toggle="modal" data-target="#myModal">Logout</a>
 			</div>
+		</li>
+
+		<li class="nav-item" *ngIf="user">
+			<a class="nav-link">{{user.username}}</a>
 		</li>
 	</ul>
 </nav>
+
+<!-- Logout Modal -->
+<div class="modal" id="myModal">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+
+			<!-- Modal body -->
+			<div class="modal-body text-center">
+				<form>
+					<h2 class="h3 mb-3 font-weight-normal">Are you sure?</h2>
+					<button class="btn btn-lg btn-danger btn-block" type="submit"
+						(click)="logout()" data-dismiss="modal">Log out</button>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>

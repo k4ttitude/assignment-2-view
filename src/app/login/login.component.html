@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="container">
-	<form class="form-signin col-4 mt-xl-5" (submit)="login($event)" *ngIf="!authService.isLoggedIn">
+	<form class="form-signin col-4 mt-xl-5" (submit)="login($event)" *ngIf="!user">
 		<img class="mb-4 dochub-img" src="assets/img/dochub_black.png" height="70px">
 		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-		<label for="inputEmail" class="sr-only">Email address</label>
+		<label for="username" class="sr-only">Username</label>
 		<input type="text" id="username" class="form-control" placeholder="Username" required autofocus>
 		<label for="password" class="sr-only">Password</label>
 		<input type="password" id="password" class="form-control" placeholder="Password" required>
@@ -25,8 +25,8 @@
 		<p class="mt-5 mb-3 text-muted text-center">&copy; 2018</p>
 	</form>
 
-	<form class="form-signin col-4 mt-xl-5" (submit)="logout()" *ngIf="authService.isLoggedIn">
+	<!-- <form class="form-signin col-4 mt-xl-5" (submit)="logout()" *ngIf="!user">
 		<h1 class="h3 mb-3 font-weight-normal">Are you sure that you want to Log out?</h1>
 		<button class="btn btn-lg btn-dark btn-block" type="submit">Log out</button>
-	</form>
+	</form> -->
 </div>
