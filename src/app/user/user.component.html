@@ -95,16 +95,18 @@
 					<!-- <ul class="slides" *ngIf="docs"> -->
 					<ul class="docList" *ngIf="docs">
 						<li *ngFor="let doc of docs">
-							<div class="card m-2 doc">
-								<div class="card-header">
-									<h4>{{doc.title}}</h4>
+							<a [routerLink]="['/document', doc.id]">
+								<div class="card m-2 doc">
+									<div class="card-header">
+										<h4>{{doc.title}}</h4>
+									</div>
+									<div class="card-body">
+										<p>{{doc.description}}</p>
+										<!-- <embed class="content" [src]="doc.content.safeSource"
+											type="{{doc.content.type}}" id="{{doc.id}}" /> -->
+									</div>
 								</div>
-								<div class="card-body">
-									<p>{{doc.description}}</p>
-									<!-- <embed class="content" [src]="doc.content.safeSource"
-										type="{{doc.content.type}}" id="{{doc.id}}" /> -->
-								</div>
-							</div>
+							</a>
 						</li>
 						<!-- items mirrored twice, total of 12 -->
 					</ul>

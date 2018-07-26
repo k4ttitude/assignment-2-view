@@ -53,3 +53,8 @@
 .owner-document {
   margin-top: 12px;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+}
