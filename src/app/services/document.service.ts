@@ -15,6 +15,9 @@ export class DocumentService {
   private getDocs_url = '/doc/getDocuments';
   private getDocsByEg_url = '/doc/getDocumentsByEg';
   private saveDoc_url= '/doc/saveDocument';
+  private findByTitle_url = '/doc/findByTitle';
+  private like_url = '/neo/likeDocument';
+  private comment_url = '/neo/commentDocument';
 
   constructor(private _http: Http) { }
 
@@ -35,6 +38,17 @@ export class DocumentService {
     var request_url = environment.swd.apiHost + this.saveDoc_url;
     this._http.put(request_url, doc).subscribe(
       (res: Response) => console.log(res));
+  }
+
+  public findByTitle(title: string):Observable<any> {
+    var request_url = environment.swd.apiHost + this.findByTitle_url + '?title=' + title;
+    console.log(request_url);
+    return this._http.get(request_url).pipe(
+      map((res:Response) => res.json()));
+  }
+
+  public like(userId, docID) {
+    
   }
 
 }

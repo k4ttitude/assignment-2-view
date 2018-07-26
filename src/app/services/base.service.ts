@@ -8,7 +8,9 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class BaseService {
+
+  constructor(private httpClient: HttpClient) { }
 
   private login_url = '/user/login';
   sessionSub = new Subject();
@@ -26,7 +28,15 @@ export class AuthService {
     return JSON.parse(sessionStorage.getItem('user'));
   }
 
-  constructor(private httpClient: HttpClient) { }
+  set query(value: string) {
+    sessionStorage.setItem('query', value ? value : '');
+    this.sessionSub.next('query');
+  }
+
+  get query() {
+    return sessionStorage.getItem('query');
+  }
+
 
   validateLogin(username, password):Observable<any> {
   	return this.httpClient.post(environment.swd.apiHost + this.login_url, null,

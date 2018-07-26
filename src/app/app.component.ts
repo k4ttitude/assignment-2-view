@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from './model/user';
-import { AuthService } from './services/auth.service';
+import { BaseService } from './services/base.service';
 
 
 @Component({
@@ -11,6 +11,6 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   title = 'app';
 
-  constructor(private authService: AuthService) {
+  constructor(private baseService: BaseService) {
   }
 }

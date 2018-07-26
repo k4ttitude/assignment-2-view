@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../services/auth.service';
+import { BaseService } from '../services/base.service';
 import { User } from '../model/user';
 
 @Component({
@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   user:User;
   query: string;
 
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(private auth: BaseService, private router: Router) {
     auth.sessionSub.subscribe(evt => {
       this.user = auth.user;
     })
@@ -30,7 +30,8 @@ export class HeaderComponent implements OnInit {
 
   search() {
     console.log(this.query);
-    sessionStorage.setItem('query', this.query);
+    // sessionStorage.setItem('query', this.query);
+    this.auth.query = this.query;
     this.router.navigate(['/feed']);
   }
 

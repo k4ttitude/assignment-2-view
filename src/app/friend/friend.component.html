@@ -1,0 +1,16 @@
+<div class="card mt-5">
+	<div class="card-header">
+	<h4>Friends</h4></div>
+	<ul id="friends" *ngIf="friends">
+		<li *ngFor='let f of friends'>
+			<a [routerLink]="['/user', f.id]">{{f.name}}</a>
+		</li>
+	</ul>
+<div class="card-header">
+	<h4>Everyone</h4></div>
+	<ul id='users'>
+		<li *ngFor='let u of users'>
+			<a [routerLink]="['/user', u.id]">{{u.name}}</a>
+		</li>
+	</ul>
+</div>

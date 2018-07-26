@@ -16,6 +16,7 @@ export class UserService {
   private getUserById_url = '/user/getUser/';
   private getUsersByEg_url = '/user/getUsersByEg';
   private saveUser_url = '/user/saveUser';
+  private getFriendIds_url = '/neo/getFriendIds';
 
   constructor(private _http: Http) { }
 
@@ -44,6 +45,12 @@ export class UserService {
     this._http.put(request_url, user).subscribe(_result => {
       console.log(_result);
     })
+  }
+
+  public getFriendIds(userId: String):Observable<any> {
+    var request_url = environment.swd.apiHost + this.getFriendIds_url + '?userId=' + userId;
+    return this._http.get(request_url).pipe(
+      map((res:Response) => res.json()));
   }
 
 }

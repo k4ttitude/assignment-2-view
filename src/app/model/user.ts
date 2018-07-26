@@ -9,4 +9,6 @@ export class User {
 	name: String;
 	type_id: String;
 	avatar: File;
+
+	isFriend: boolean;
 }

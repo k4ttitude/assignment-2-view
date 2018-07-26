@@ -1,23 +1,35 @@
-<div class="col-md-9">
-	<h2>Document Feeds</h2>
 
-	<ul *ngIf="docs">
-		<li *ngFor="let doc of docs">
-			<div class="card mt-5">
-				<div class="card-header">
-					<h4>{{doc.title}}</h4>
-				</div>
-				<div class="card-body">
-					<p>{{doc.description}}</p>
-					<!-- <a href="#">Download</a> -->
-					<embed class="content" [src]="doc.content.safeSource"
-						type="{{doc.content.type}}" id="{{doc.id}}" />
-				</div>
-			</div>
-		</li>
-	</ul>
-</div>
+<div class="row">
+	<div class="col-md-9 float-left">
+		<h2>Document Feeds</h2>
 
-<div class="col-md-3">
+		<ul *ngIf="docs">
+			<li *ngFor="let doc of docs">
+				<a [routerLink]="['/document', doc.id]">
+					<div class="card mt-3">
+						<div class="card-header">
+							<h4>{{doc.title}}</h4>
+							<span>by <b>{{doc.authorId}}</b></span>
+						</div>
+						<div class="card-body">
+							<p>{{doc.description}}</p>
+							<!-- <a href="#">Download</a> -->
+							<embed class="content" [src]="doc.content.safeSource"
+								type="{{doc.content.type}}" id="{{doc.id}}" />
+						</div>
 
+						<div class="card-footer">
+							<button class="btn btn-outline-primary">Like</button>
+      						<button class="btn btn-outline-success ml-2">Comment</button>
+						</div>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div class="col-md-3 float-right mt-2">
+		<h4>Users</h4>
+		<app-friend></app-friend>
+	</div>
 </div>

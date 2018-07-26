@@ -1,0 +1,55 @@
+.card .doc:hover {
+  cursor: pointer;
+  background-color: #1111;
+}
+
+.docList {
+  list-style-type: none;
+}
+
+.docList li {
+  display: inline-block;
+
+}
+
+.user-name {
+  color: #777;
+  font-weight: 900;
+}
+
+.user-info .avatar {
+  border: 1px groove #3333;
+  width: 100%;
+  height: 15em;
+  max-height: 45% !important;
+  border-radius: 50%;
+}
+
+.user-info .name {
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  font-size: 28px;
+}
+
+.user-info .info-block {
+  padding: 4px 0;
+}
+
+.user-info .info-block .title {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.user-info .info-block .content {
+  color: #777;
+  font-size: 20px;
+}
+
+.user-info .info-block .content i {
+  float: right;
+}
+
+.owner-document {
+  margin-top: 12px;
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
-import { AuthService } from '../services/auth.service';
+import { BaseService } from '../services/base.service';
 import { User } from '../model/user';
 import { Document } from '../model/document';
 import { File } from '../model/file';
@@ -17,14 +17,14 @@ export class ProfileComponent implements OnInit {
 
   docs: Document[];
   document: Document = new Document();
-  private user: User;
+  user: User;
   file: any;
   uploadType: number;
 
   DOCUMENT = 1;
   AVATAR = 2;
 
-  constructor(private auth: AuthService, private docService: DocumentService,
+  constructor(private auth: BaseService, private docService: DocumentService,
   				private userService: UserService, private _sanitizer: DomSanitizer) { }
 
   ngOnInit() {

@@ -3,7 +3,7 @@ import { Router, CanActivate } from '@angular/router';
 
 import { User} from '../model/user';
 import { UserService } from '../services/user.service';
-import { AuthService } from '../services/auth.service';
+import { BaseService } from '../services/base.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private userService: UserService, 
-    private authService: AuthService,
+    private authService: BaseService,
     private router: Router
    ) { 
     authService.sessionSub.subscribe(evt => {
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  private user:User;
+  user:User;
 
   ngOnInit() {
   }

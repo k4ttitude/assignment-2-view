@@ -1,7 +1,17 @@
 <div class="container">
-  <div class="card" style="height: 500px; margin-bottom: 16px;">
-    <div class="card-body">
+  <div *ngIf="doc" class="card" style="height: 1000px; margin-bottom: 16px;">
+    <div class="card-header">
+      <h4>{{doc.title}}</h4>
+      <span>by <b>{{doc.authorId}}</b></span>
+    </div>
+    <div class="card-body" *ngIf="doc && doc.content && doc.content.safeSource">
       <p>PDF Viewer</p>
+      <embed class="content" [src]="doc.content.safeSource"
+              type="{{doc.content.type}}" id="{{doc.id}}" />
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-outline-primary">Like</button>
+      <button class="btn btn-outline-success ml-2">Comment</button>
     </div>
   </div>
   <div class="card">

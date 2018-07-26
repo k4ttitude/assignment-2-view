@@ -16,7 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './/app-routing.module';
 
 import { AuthGuard} from './auth.guard';
-import { AuthService } from './services/auth.service';
+import { BaseService } from './services/base.service';
+import { FriendComponent } from './friend/friend.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { AuthService } from './services/auth.service';
     ProfileComponent,
     RegisterComponent,
     DocumentComponent,
-    FooterComponent
+    FooterComponent,
+    FriendComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,7 @@ import { AuthService } from './services/auth.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [ AuthService ],
+  providers: [ BaseService ],
   bootstrap: [ AppComponent, HeaderComponent, FooterComponent ]
 })
 export class AppModule { }
